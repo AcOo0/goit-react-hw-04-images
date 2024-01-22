@@ -21,12 +21,12 @@ const ImageGallery = () => {
     const [fullImage, setFullImage] = useState({});
 
     useEffect(() => {
-        const fetchImages = async () => {        
+        const fetchImages = async () => {
             try {
                 setLoading(true);
                 const { data } = await searchImages(search, page);
 
-                if (!data.total) { 
+                if (!data.total) {
                     return alert('Ох! Нажаль за Вашим запитом нічого не знайдено');
                 }
                 setHits(prevHits => data.hits?.length ? [...prevHits, ...data.hits] : prevHits)
@@ -42,13 +42,13 @@ const ImageGallery = () => {
             fetchImages()
         }
         
-    }, [search, page])
+    }, [search, page]);
 
     const handleSearch = ({ search }) => {
         setSearch(search);
         setHits([]);
         setPage(1);
-    }
+    };
 
     const loadMore = () => setPage(prevPage => prevPage + 1);
 
@@ -58,12 +58,12 @@ const ImageGallery = () => {
             largeImageURL,
             tags,
         })
-    }
+    };
 
-    const closeModal = () => { 
+    const closeModal = () => {
         setModalOpen(false);
         setFullImage({})
-    }
+    };
 
     const isImages = Boolean(hits.length);
         
