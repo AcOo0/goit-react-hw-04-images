@@ -13,9 +13,10 @@ const Modal = ({ close,  children}) => {
     }
 
     useEffect(() => {
-        document.addEventListener("keyup", closeModal);
+        const handleKeyUp = (event) => closeModal(event);
+        document.addEventListener("keyup", handleKeyUp);
 
-        return ()=> document.removeEventListener("keyup", closeModal)
+        return ()=> document.removeEventListener("keyup", handleKeyUp)
     }, [closeModal])
 
     return createPortal(
