@@ -16,7 +16,7 @@ const Modal = ({ close,  children}) => {
         document.addEventListener("keyup", closeModal);
 
         return ()=> document.removeEventListener("keyup", closeModal)
-    }, [])
+    }, [closeModal])
 
     return createPortal(
             (<div onClick={closeModal} className={styles.overlay} >
